@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+    head
+        block meta
+            meta(charset="utf-8")
+            meta(name="viewport" content="width=device-width, initial-scale=1")
+        block title
+            title #{title} - #{site.name}
+        link(rel="stylesheet" href=`${site.baseUrl}css/style.css`)
+    body
+        header.container
+            nav.navbar.navbar-expand.navbar-light.bg-light
+                span.navbar-brand= site.name
+                ul.navbar-nav.mr-auto
+                    each item in site.navItems
+                        if item.href === file || item.href === path
+                            li.nav-item.active
+                                span.nav-link= item.text
+                        else
+                            li.nav-item
+                                a.nav-link(href=`${site.baseUrl}${item.href}`)= item.text
+            main.container.mt-3
+                block main
+            footer.container
+                block footer
+                p.text-center Example Metalsmith site template by <a href="https://gir.me.uk/">George Borisov</a> (<a href="https://github.com/borisovg/metalsmith-blog-example">source code</a>).

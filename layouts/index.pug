@@ -1,0 +1,29 @@
+extends base
+
+block title
+    title #{(pagination.index) ? title + ' - Page ' + pagination.num : title} - #{site.name}
+
+block main
+    each file in pagination.files
+        section
+            h1.mb-3
+                a(href=`${site.baseUrl}${file.path}`) #{file.title}
+            if file.less
+                div!= file.less
+                p
+                    a(href=`${site.baseUrl}${file.path}`) More
+            else
+                div!= file.contents
+
+block footer
+    nav.row.navbar.navbar-expand.navbar-light.bg-light.mb-3
+        .col-6
+            if pagination.previous
+                span
+                    span.mr-2 &larr;
+                    a(href=`${site.baseUrl}${pagination.previous.path}`) Newer Posts
+        .col-6.text-right
+            if pagination.next
+                span
+                    a(href=`${site.baseUrl}${pagination.next.path}`) Older Posts
+                    span.ml-2 &rarr;
