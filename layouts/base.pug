@@ -9,18 +9,23 @@ html(lang="en")
         link(rel="stylesheet" href=`${site.baseUrl}css/style.css`)
     body
         header.container
-            nav.navbar.navbar-expand.navbar-light.bg-light
-                span.navbar-brand= site.name
-                ul.navbar-nav.mr-auto
-                    each item in site.navItems
-                        if item.href === file || item.href === path
-                            li.nav-item.active
-                                span.nav-link= item.text
-                        else
-                            li.nav-item
-                                a.nav-link(href=`${site.baseUrl}${item.href}`)= item.text
-            main.container.mt-3
-                block main
-            footer.container
-                block footer
-                p.text-center Example Metalsmith site template by <a href="https://gir.me.uk/">George Borisov</a> (<a href="https://github.com/borisovg/metalsmith-blog-example">source code</a>).
+            nav.navbar.navbar-expand-lg.bg-light
+                .container-fluid
+                    span.navbar-brand= site.name
+                    button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+                        span.navbar-toggler-icon
+                    #navbarNav.navbar-collapse.collapse
+                        ul.navbar-nav.me-auto
+                            each item in site.navItems
+                                if item.href === file || item.href === path
+                                    li.nav-item
+                                        span.active.nav-link= item.text
+                                else
+                                    li.nav-item
+                                        a.nav-link(href=`${site.baseUrl}${item.href}`)= item.text
+        main.container.mt-3
+            block main
+        footer.container
+            block footer
+            p.text-center Example Metalsmith site template by <a href="https://gir.me.uk/">George Borisov</a> (<a href="https://github.com/borisovg/metalsmith-blog-example">source code</a>).
+        script(src=`${site.baseUrl}js/bootstrap.bundle.min.js`)

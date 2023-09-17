@@ -16,13 +16,13 @@ block main
                 div!= file.contents
 
 block footer
-    nav.row.navbar.navbar-expand.navbar-light.bg-light.mb-3
+    nav.row.navbar.bg-light.mb-3
         .col-6
             if pagination.previous
                 span
                     span.mr-2 &larr;
                     a(href=`${site.baseUrl}${pagination.previous.path}`) Newer Posts
-        .col-6.text-right
+        .col-6.text-end
             if pagination.next
                 span
                     a(href=`${site.baseUrl}${pagination.next.path}`) Older Posts
