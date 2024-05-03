@@ -1,6 +1,6 @@
 # metalsmith-blog-example
 
-A working example Metalsmith blog, suitable for use as a template for your own site.
+A working example of a static [Metalsmith](https://metalsmith.io/) blog, suitable for use as a template for your own site.
 
 ## Demo
 
