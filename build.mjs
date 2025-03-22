@@ -6,10 +6,15 @@
  * @license Apache-2.0
  */
 
+const {
+  BASE_URL = '/',
+  DOMAIN = 'www.example.com',
+} = process.env;
+
 // variables
-const baseUrl = "/";
+const baseUrl = BASE_URL;
 const siteName = "Example Metalsmith Blog";
-const siteRoot = `https://www.example.com${baseUrl}`;
+const siteRoot = `https://${DOMAIN}${baseUrl}`;
 const navItems = [
   { href: "index.html", text: "Posts" },
   { href: "first-page.html", text: "First Page" },
