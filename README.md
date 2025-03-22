@@ -24,12 +24,12 @@ rm -r .git
 npm install
 ```
 
-Edit the variables at the top of `build.js`.
+Edit the variables at the top of `build.mjs`.
 
 Edit the content in `src/` and build the site:
 
 ```
-node build.js
+node build.mjs
 ```
 
 Copy the contents of `public/` to your web hosting server.

@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-"use strict";
 
 /**
  * Metalsmith build file
@@ -10,7 +9,7 @@
 // variables
 const baseUrl = "/";
 const siteName = "Example Metalsmith Blog";
-const siteRoot = "https://www.example.com/";
+const siteRoot = `https://www.example.com${baseUrl}`;
 const navItems = [
   { href: "index.html", text: "Posts" },
   { href: "first-page.html", text: "First Page" },
@@ -18,20 +17,20 @@ const navItems = [
 ];
 
 // metalsmith plugins
-const collections = require("@metalsmith/collections");
-const dateFormatter = require("metalsmith-date-formatter");
-const htmlMinifier = require("metalsmith-html-minifier");
-const layouts = require("@metalsmith/layouts");
-const markdown = require("@metalsmith/markdown");
-const metalsmith = require("metalsmith");
-const more = require("metalsmith-more");
-const pagination = require("metalsmith-pagination");
-const pug = require("metalsmith-pug");
-const sass = require("metalsmith-sass");
-const sitemap = require("metalsmith-sitemap");
+import collections from "@metalsmith/collections";
+import dateFormatter from "metalsmith-date-formatter";
+import htmlMinifier from "metalsmith-html-minifier";
+import inPlace from "@metalsmith/in-place";
+import layouts from "@metalsmith/layouts";
+import metalsmith from "metalsmith";
+import more from "metalsmith-more";
+import pagination from "metalsmith-pagination";
+import pug from "metalsmith-pug";
+import sass from "metalsmith-sass";
+import sitemap from "metalsmith-sitemap";
 
 // build configuration (order is important)
-metalsmith(__dirname)
+metalsmith(import.meta.dirname)
   .metadata({
     site: {
       baseUrl,
@@ -51,7 +50,6 @@ metalsmith(__dirname)
       ],
     })
   )
-  .use(markdown())
   .use(
     sass({
       outputStyle: "compressed",
@@ -62,7 +60,25 @@ metalsmith(__dirname)
       useMetadata: true,
     })
   )
-  .use(more())
+  .use(
+    inPlace({
+      extname: ".pug",
+      transform: "markdown-it",
+      engineOptions: {
+        html: true,
+      },
+    })
+  )
+  .use(
+    more({
+      ext: "pug",
+    })
+  )
+  .use(
+    layouts({
+      transform: "pug",
+    })
+  )
   .use(
     collections({
       posts: {
@@ -86,7 +102,12 @@ metalsmith(__dirname)
       },
     })
   )
-  .use(layouts())
+  .use(
+    layouts({
+      transform: "pug",
+      pattern: "index*.html",
+    })
+  )
   .use(
     sitemap({
       hostname: siteRoot,
