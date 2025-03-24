@@ -1,6 +1,9 @@
 all: build
 
-build:
+clean:
+	rm -rf node_modules public package-lock.json
+
+build: node_modules
 	node build.mjs
 
 build-demo:
@@ -8,3 +11,7 @@ build-demo:
 
 serve: build
 	npx http-server public/
+
+node_modules: package.json
+	npm update || (rm -rf $@; exit 1)
+	touch $@
