@@ -1,0 +1,7 @@
+/* either copy or symlink bootstrap.min.css and bootstrap.min.css.map from node_modules/bootstrap/dist/css/ */
+@import "bootstrap.min.css";
+
+/* example of setting variables to override Bootstrap defaults */
+:root {
+  --bs-body-font-size: 1.2rem;
+}

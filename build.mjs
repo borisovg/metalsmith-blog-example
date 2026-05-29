@@ -31,7 +31,6 @@ import metalsmith from "metalsmith";
 import more from "metalsmith-more";
 import pagination from "metalsmith-pagination";
 import pug from "metalsmith-pug";
-import sass from "metalsmith-sass";
 import sitemap from "metalsmith-sitemap";
 
 // build configuration (order is important)
@@ -53,11 +52,6 @@ metalsmith(import.meta.dirname)
           format: "YYYY-MM-DD",
         },
       ],
-    })
-  )
-  .use(
-    sass({
-      outputStyle: "compressed",
     })
   )
   .use(

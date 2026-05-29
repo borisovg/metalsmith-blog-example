@@ -11,7 +11,7 @@ https://borisovg.github.io/metalsmith-blog-example-demo/
 - Blog posts (without comments)
 - Stand alone pages
 - [Pug](https://pugjs.org/) templates
-- Minified HTML and CSS (using SASS and Bootstrap 5)
+- Minified HTML and CSS (using Bootstrap 5)
 - Sitemap
 - Built as a static site using Metalsmith :)
 
