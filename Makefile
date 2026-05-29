@@ -13,5 +13,5 @@ serve: build
 	npx http-server public/
 
 node_modules: package.json
-	npm update || (rm -rf $@; exit 1)
+	pnpm update || (rm -rf $@; exit 1)
 	touch $@
