@@ -21,7 +21,7 @@ https://borisovg.github.io/metalsmith-blog-example-demo/
 git clone https://github.com/borisovg/metalsmith-blog-example.git my-site
 cd my-site
 rm -r .git
-npm install
+pnpm install
 ```
 
 Edit the variables at the top of `build.mjs`.
