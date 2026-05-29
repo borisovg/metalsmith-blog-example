@@ -82,8 +82,7 @@ metalsmith(import.meta.dirname)
     collections({
       posts: {
         pattern: "posts/*/*.html",
-        sortBy: "date",
-        reverse: true,
+        sort: "date:desc",
       },
     })
   )
