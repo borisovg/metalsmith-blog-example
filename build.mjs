@@ -86,6 +86,12 @@ metalsmith(import.meta.dirname)
       },
     })
   )
+  // workaround for breaking change in @metalsmith/collections plugin
+  .use((files, ms) => { 
+    Object.entries(files).forEach(([path, file]) => {
+      file.path = path
+    })
+  })
   .use(
     pagination({
       "collections.posts": {
